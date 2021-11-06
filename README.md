@@ -1,1 +1,1 @@
-# imooc-news-dev
+# 自媒体项目
