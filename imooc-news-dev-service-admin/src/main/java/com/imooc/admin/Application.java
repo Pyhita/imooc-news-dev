@@ -6,9 +6,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 import tk.mybatis.spring.annotation.MapperScan;
 
-import java.util.ArrayDeque;
-import java.util.Deque;
-
 @SpringBootApplication
 @MapperScan(basePackages = "com.imooc.admin.mapper")
 @ComponentScan(basePackages = {"com.imooc", "org.n3r.idworker"})

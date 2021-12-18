@@ -15,6 +15,7 @@ public class HelloController implements HelloControllerApi {
 
     static final Logger logger = LoggerFactory.getLogger(HelloController.class);
 
+
     @Autowired
     private RedisOperator redisOperator;
 

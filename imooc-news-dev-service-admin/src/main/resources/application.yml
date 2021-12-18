@@ -28,6 +28,11 @@ spring:
     jackson:
       date-format: yyyy-MM-dd HH:mm:ss
 
+  data:
+    mongodb:
+      uri: mongodb://192.168.8.131:27017
+      database: imooc-news
+
   redis:
     port: 6379
     database: 0

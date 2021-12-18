@@ -3,15 +3,16 @@ package com.imooc.api.interceptors;
 import com.imooc.exception.GraceException;
 import com.imooc.grace.result.ResponseStatusEnum;
 import com.imooc.utils.RedisOperator;
-import io.netty.util.internal.StringUtil;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.redis.core.RedisTemplate;
-import sun.security.provider.PolicyParser;
+
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
 
 public class BaseInterceptor {
 
-    protected static final String REDIS_USER_INFO = "redis:user:info";
+    protected static final String REDIS_USER_INFO = "redis_user_info";
+    protected static final String REDIS_ADMIN_TOKEN = "redis_admin_token";
 
     @Autowired
     protected RedisOperator redisOperator;
@@ -38,6 +39,21 @@ public class BaseInterceptor {
         }
 
         return true;
+    }
+
+    // 从cookie中取值
+    protected String getCookie(HttpServletRequest request, String key) {
+        Cookie[] cookies = request.getCookies();
+        if (cookies == null) {
+            return null;
+        }
+        for (Cookie cookie : cookies) {
+            if (cookie.getName().equals(key)) {
+                String value = cookie.getValue();
+                return value;
+            }
+        }
+        return null;
     }
 
 
